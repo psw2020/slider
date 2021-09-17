@@ -1,11 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementsByClassName('sliderItem').slider();
+    sliderCustom(document.getElementsByClassName('sliderItem'));
 })
 
 slider = {group: '', position: 0, index: 0};
 
-Object.prototype.slider = function () {
-    const arr = this;
+function sliderCustom(arr) {
     slider.length = arr.length;
     html();
     createObject(arr);
@@ -25,17 +24,25 @@ function createObject(arr) {
     });
 }
 
+function closeSlider() {
+    document.getElementById('sliderWrapper').style.display = 'none';
+    document.getElementById('sliderImageArea').innerHTML = '';
+}
+
 function addListener(arr) {
     const sw = document.getElementById('sliderWrapper');
-    document.getElementsByTagName('body')[0].addEventListener('keydown', (e)=>{
-        if(e.key === "Escape") {
+    const close = document.getElementById('closeSlider');
+
+    document.getElementsByTagName('body')[0].addEventListener('keydown', (e) => {
+        if (e.key === "Escape") {
             sw.dispatchEvent(new Event('click'));
         }
     })
-    sw.onclick = function () {
-        this.style.display = 'none';
-        document.getElementById('sliderImageArea').innerHTML = '';
-    }
+
+    sw.onclick =  () => closeSlider();
+
+    close.onclick = () => closeSlider();
+
     Array.prototype.forEach.call(arr, el => {
         el.addEventListener('click', (e) => {
             e.preventDefault();
@@ -106,12 +113,15 @@ function setControls() {
 
 function createImg(src) {
     const img = document.createElement('img');
+    img.setAttribute('id', 'sliderCurrentImage');
     img.setAttribute('src', src);
     return img;
 }
 
 function html() {
-    str = `<div class="sliderArea">
+    const str = `
+    <div id="closeSlider">X</div>
+    <div class="sliderArea">
     <div id="sliderImageArea"></div>
     <div id="sliderPrev"></div>
     <div id="sliderNext"></div>

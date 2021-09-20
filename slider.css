@@ -49,16 +49,33 @@
     width: 50%;
     position: relative;
     top: 0;
+    cursor: pointer;
+    color: rgba(0,0,0,0);
+    font-size: 80px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    user-select:none;
 }
+
 
 #sliderNext{
     width: 50%;
     position: relative;
     top: 0;
     margin-left: 50%;
+    cursor: pointer;
+    color: rgba(0,0,0,0);
+    font-size: 80px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    user-select:none;
 }
 
-
+#sliderPrev:hover,#sliderNext:hover{
+    color: black;
+}
 
 
 

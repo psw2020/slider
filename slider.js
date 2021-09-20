@@ -123,8 +123,8 @@ function html() {
     <div id="closeSlider">X</div>
     <div class="sliderArea">
     <div id="sliderImageArea"></div>
-    <div id="sliderPrev"></div>
-    <div id="sliderNext"></div>
+    <div id="sliderPrev"><</div>
+    <div id="sliderNext">></div>
     <div class="sliderLoader"></div>
     </div>`;
     const el = document.createElement('div');
